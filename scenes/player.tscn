@@ -4,26 +4,37 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3mldf"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(0.38363665, 0.81175095, 0.85933137, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_3mldf"]
 
-[node name="Player" type="Node3D" unique_id=1388977506 node_paths=PackedStringArray("camera", "camera_focus")]
+[node name="Player" type="Node3D" unique_id=1388977506 node_paths=PackedStringArray("visual_player", "camera", "camera_focus", "camera_pivot")]
 script = ExtResource("1_3vyb7")
-camera = NodePath("CameraFocus/CameraPivot/Camera3D")
+visual_player = NodePath("VisualPlayer")
+camera = NodePath("CameraFocus/CameraPivot/CameraPoint/Camera3D")
 camera_focus = NodePath("CameraFocus")
+camera_pivot = NodePath("CameraFocus/CameraPivot")
 
-[node name="PlaceholderCapsule" type="MeshInstance3D" parent="." unique_id=947115696]
+[node name="VisualPlayer" type="Node3D" parent="." unique_id=1377809873]
+
+[node name="PlaceholderCapsule" type="MeshInstance3D" parent="VisualPlayer" unique_id=947115696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_3mldf")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vyb7")
 
-[node name="PlaceholderFacing" type="MeshInstance3D" parent="." unique_id=357704461]
+[node name="PlaceholderFacing" type="MeshInstance3D" parent="VisualPlayer" unique_id=357704461]
 transform = Transform3D(0.6593331, 0, 0, 0, -2.8820365e-08, -0.6593331, 0, 0.6593331, -2.8820365e-08, 0, 1.350316, 0.6684047)
 mesh = SubResource("PrismMesh_3mldf")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vyb7")
 
 [node name="CameraFocus" type="Node3D" parent="." unique_id=1564281128]
 
 [node name="CameraPivot" type="Node3D" parent="CameraFocus" unique_id=628757881]
+
+[node name="CameraPoint" type="Node3D" parent="CameraFocus/CameraPivot" unique_id=1300461585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5622468, -4.8062797)
 
-[node name="Camera3D" type="Camera3D" parent="CameraFocus/CameraPivot" unique_id=1993582299]
+[node name="Camera3D" type="Camera3D" parent="CameraFocus/CameraPivot/CameraPoint" unique_id=1993582299]
 transform = Transform3D(-1, 0, 8.742278e-08, 2.4793618e-08, 0.9589409, 0.28360593, -8.383328e-08, 0.28360593, -0.9589409, 0, 0, 0)
 current = true
