@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://byujwdcaim4y3"]
+
+[ext_resource type="PackedScene" uid="uid://sx2ykkyvrnt5" path="res://scenes/player.tscn" id="1_03k34"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3mldf"]
+size = Vector2(200, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mldf"]
+size = Vector3(200, 1, 200)
+
+[node name="DemoScene" type="Node3D" unique_id=106185867]
+
+[node name="Player" parent="." unique_id=1388977506 instance=ExtResource("1_03k34")]
+
+[node name="Floor" type="Node3D" parent="." unique_id=307077698]
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=921913797]
+mesh = SubResource("PlaneMesh_3mldf")
+
+[node name="FloorBody" type="StaticBody3D" parent="Floor" unique_id=32960155]
+
+[node name="FloorShape" type="CollisionShape3D" parent="Floor/FloorBody" unique_id=1331184987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_3mldf")
+
+[node name="SunLight" type="DirectionalLight3D" parent="." unique_id=496160419]
+transform = Transform3D(0.6162804, -0.6567008, 0.43467522, 0, 0.55194974, 0.8338774, -0.7875268, -0.51390225, 0.34015578, 0, 0, 0)
