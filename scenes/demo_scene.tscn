@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://byujwdcaim4y3"]
 
 [ext_resource type="PackedScene" uid="uid://sx2ykkyvrnt5" path="res://scenes/player.tscn" id="1_03k34"]
+[ext_resource type="Texture2D" uid="uid://crumfbjv8fi5q" path="res://assets/TestTexture.png" id="2_ba4t3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3mldf"]
 size = Vector2(200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03k34"]
+albedo_texture = ExtResource("2_ba4t3")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mldf"]
 size = Vector3(200, 1, 200)
@@ -16,6 +22,7 @@ size = Vector3(200, 1, 200)
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=921913797]
 mesh = SubResource("PlaneMesh_3mldf")
+surface_material_override/0 = SubResource("StandardMaterial3D_03k34")
 
 [node name="FloorBody" type="StaticBody3D" parent="Floor" unique_id=32960155]
 
