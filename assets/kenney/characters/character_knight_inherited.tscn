@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://lmcpr2w7c334"]
+
+[ext_resource type="PackedScene" uid="uid://cgyj7mabpafci" path="res://assets/kenney/characters/character-knight.fbx" id="1_2fx3k"]
+
+[node name="character-knight" unique_id=539033603 instance=ExtResource("1_2fx3k")]
+
+[node name="Skeleton3D" parent="character-knight" parent_id_path=PackedInt32Array(468828671) index="0" unique_id=659553588]
+bones/4/rotation = Quaternion(0, -0.5, 0, 0.8660254)
+bones/5/rotation = Quaternion(0, 0.5, 0, 0.8660254)
+bones/6/position = Vector3(0, 0.16699998, 0.026388645)

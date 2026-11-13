@@ -11,14 +11,22 @@ config_version=5
 [application]
 
 config/name="CS-464-Group15-Project"
-run/main_scene="uid://byujwdcaim4y3"
+run/main_scene="uid://cvbjcmdrhmnj"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ExperimentParameters="*uid://cipakv2r5vowc"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+player=""
 
 [input]
 

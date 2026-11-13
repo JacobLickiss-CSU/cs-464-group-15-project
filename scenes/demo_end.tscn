@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://psiaggmhwq48"]
+
+[ext_resource type="Script" uid="uid://ch0nvuvpw34i3" path="res://scripts/DemoEndGate.gd" id="1_6xlmn"]
+[ext_resource type="PackedScene" uid="uid://cvetxt8517k3h" path="res://assets/kenney/dungeon/banner.fbx" id="1_u5vng"]
+[ext_resource type="PackedScene" uid="uid://nry2gagb4s76" path="res://assets/kenney/dungeon/gate.fbx" id="2_pe2l6"]
+[ext_resource type="PackedScene" uid="uid://dhr6mc3u8yjx3" path="res://assets/kenney/dungeon/wood-support.fbx" id="3_6xlmn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3mldf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8up58"]
+transparency = 1
+albedo_color = Color(0.34901962, 1, 0.34901962, 0.14117648)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mldf"]
+size = Vector3(7.7562256, 6.32959, 7.217285)
+
+[node name="DemoEnd" type="Node3D" unique_id=439430573]
+script = ExtResource("1_6xlmn")
+
+[node name="banner" parent="." unique_id=1505659124 instance=ExtResource("1_u5vng")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -3, 1.3257275, 1.1197248)
+
+[node name="banner2" parent="." unique_id=653456371 instance=ExtResource("1_u5vng")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3, 1.3257275, 1.1197248)
+
+[node name="gate" parent="." unique_id=1368258560 instance=ExtResource("2_pe2l6")]
+transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, 0, 0, 0)
+
+[node name="gate2" parent="." unique_id=1221355814 instance=ExtResource("2_pe2l6")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0.7100072)
+
+[node name="wood-support" parent="." unique_id=1466653749 instance=ExtResource("3_6xlmn")]
+transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, 0, 0, -0.58681965)
+
+[node name="indicator" type="MeshInstance3D" parent="." unique_id=1250380666]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.07870364, -3.4617543)
+mesh = SubResource("PlaneMesh_3mldf")
+surface_material_override/0 = SubResource("StandardMaterial3D_8up58")
+
+[node name="DemoEndArea" type="Area3D" parent="." unique_id=320663340]
+
+[node name="DemoEndShape" type="CollisionShape3D" parent="DemoEndArea" unique_id=1379682529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020568848, 2.664795, -3.1086426)
+shape = SubResource("BoxShape3D_3mldf")
+
+[connection signal="body_entered" from="DemoEndArea" to="." method="_on_demo_end_area_body_entered"]
