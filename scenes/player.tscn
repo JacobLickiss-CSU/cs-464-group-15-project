@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dlensi1rhpkal" path="res://scripts/Player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://lmcpr2w7c334" path="res://assets/kenney/characters/character_knight_inherited.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dvwuyd2ttgfpe" path="res://assets/kenney/characters/shield-rectangle.fbx" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://lipb0lj0t5ey" path="res://assets/toggled.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://lmdn4m4a1ffh" path="res://assets/locking.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://71q1vqyxiu5v" path="res://assets/snapping.png" id="6_fjrip"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3mldf"]
 
@@ -18,13 +21,16 @@ size = Vector3(1.3843384, 2.4205933, 0.58405304)
 radius = 0.5991211
 height = 2.0551758
 
-[node name="Player" type="CharacterBody3D" unique_id=1674580870 node_paths=PackedStringArray("visual_player", "camera", "camera_focus", "camera_pivot", "camera_label") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1674580870 node_paths=PackedStringArray("visual_player", "camera", "camera_focus", "camera_pivot", "camera_label", "toggle_label", "locking_label", "snapping_label") groups=["player"]]
 script = ExtResource("1_3vyb7")
 visual_player = NodePath("VisualPlayer")
 camera = NodePath("CameraFocus/CameraPivot/CameraPoint/Camera3D")
 camera_focus = NodePath("CameraFocus")
 camera_pivot = NodePath("CameraFocus/CameraPivot")
 camera_label = NodePath("Control/CameraLabel")
+toggle_label = NodePath("Control/ToggledInfo")
+locking_label = NodePath("Control/LockingInfo")
+snapping_label = NodePath("Control/SnappingInfo")
 
 [node name="VisualPlayer" type="Node3D" parent="." unique_id=1377809873]
 
@@ -75,6 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CameraLabel" type="Label" parent="Control" unique_id=1768968272]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -86,6 +93,48 @@ offset_right = 40.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Camera mode: "
+
+[node name="ToggledInfo" type="TextureRect" parent="Control" unique_id=431819650]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -114.0
+offset_right = 559.7857
+offset_bottom = -11.0
+grow_vertical = 0
+texture = ExtResource("4_dqkch")
+expand_mode = 1
+
+[node name="LockingInfo" type="TextureRect" parent="Control" unique_id=2065910988]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -114.0
+offset_right = 559.7857
+offset_bottom = -11.0
+grow_vertical = 0
+texture = ExtResource("5_tuyoq")
+expand_mode = 1
+
+[node name="SnappingInfo" type="TextureRect" parent="Control" unique_id=849781502]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -114.0
+offset_right = 559.7857
+offset_bottom = -11.0
+grow_vertical = 0
+texture = ExtResource("6_fjrip")
+expand_mode = 1
 
 [node name="CharacterShape" type="CollisionShape3D" parent="." unique_id=1176130243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9724121, 0)

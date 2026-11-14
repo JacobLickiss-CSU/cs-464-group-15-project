@@ -20,6 +20,15 @@ var camera_pivot : Node3D
 var camera_label : Label
 
 @export
+var toggle_label : TextureRect
+
+@export
+var locking_label : TextureRect
+
+@export
+var snapping_label : TextureRect
+
+@export
 var speed : float = 10
 
 @export
@@ -50,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		ControlScheme.Toggled:
 			_process_toggled(delta)
 			camera_label.text = "Camera mode: Toggled"
+			toggle_label.visible = true
 			#if(Input.is_action_just_pressed("debug_next")):
 				#controls = ControlScheme.Locking
 			#elif(Input.is_action_just_pressed("debug_last")):
@@ -57,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		ControlScheme.Locking:
 			_process_locking(delta)
 			camera_label.text = "Camera mode: Locking"
+			locking_label.visible = true
 			#if(Input.is_action_just_pressed("debug_next")):
 				#controls = ControlScheme.Snapping
 			#elif(Input.is_action_just_pressed("debug_last")):
@@ -64,6 +75,7 @@ func _physics_process(delta: float) -> void:
 		ControlScheme.Snapping:
 			_process_snapping(delta)
 			camera_label.text = "Camera mode: Snapping"
+			snapping_label.visible = true
 			#if(Input.is_action_just_pressed("debug_next")):
 				#controls = ControlScheme.Toggled
 			#elif(Input.is_action_just_pressed("debug_last")):
