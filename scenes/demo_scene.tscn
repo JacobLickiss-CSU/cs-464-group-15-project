@@ -23,6 +23,7 @@ script = ExtResource("1_0ekuu")
 player = NodePath("Player")
 
 [node name="Player" parent="." unique_id=1388977506 instance=ExtResource("1_03k34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041765213, 0)
 
 [node name="Floor" type="Node3D" parent="." unique_id=307077698]
 

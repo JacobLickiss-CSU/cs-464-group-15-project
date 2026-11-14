@@ -18,7 +18,7 @@ size = Vector3(1.3843384, 1.4938965, 0.58405304)
 radius = 0.5991211
 height = 2.0551758
 
-[node name="Player" type="Node3D" unique_id=1388977506 node_paths=PackedStringArray("visual_player", "camera", "camera_focus", "camera_pivot", "camera_label")]
+[node name="Player" type="CharacterBody3D" unique_id=1674580870 node_paths=PackedStringArray("visual_player", "camera", "camera_focus", "camera_pivot", "camera_label") groups=["player"]]
 script = ExtResource("1_3vyb7")
 visual_player = NodePath("VisualPlayer")
 camera = NodePath("CameraFocus/CameraPivot/CameraPoint/Camera3D")
@@ -48,6 +48,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.07059365, 0.34247282)
 
 [node name="ShieldCollider" type="StaticBody3D" parent="VisualPlayer" unique_id=651314954 groups=["shield"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9563401)
+collision_layer = 2
+collision_mask = 2
 
 [node name="ShieldShape" type="CollisionShape3D" parent="VisualPlayer/ShieldCollider" unique_id=578898861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004547119, 0.94299316, -0.074474335)
@@ -85,8 +87,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Camera mode: "
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1098685560 groups=["player"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1176130243]
+[node name="CharacterShape" type="CollisionShape3D" parent="." unique_id=1176130243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9724121, 0)
 shape = SubResource("CapsuleShape3D_qhqgy")

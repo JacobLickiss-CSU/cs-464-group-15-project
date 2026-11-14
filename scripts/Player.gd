@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 class_name Player
 
 @export
@@ -46,7 +46,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match controls:
 		ControlScheme.Toggled:
 			_process_toggled(delta)
@@ -80,8 +80,10 @@ func _process_toggled(delta: float) -> void:
 	var right_stick_input = Input.get_vector("rightstick_left", "rightstick_right", "rightstick_up", "rightstick_down")
 	
 	# Player position movement
-	var movement : Vector2 = left_stick_input.normalized().rotated(-camera_focus.rotation.y) * delta * speed
-	position += Vector3(-movement.x, 0, -movement.y)
+	var movement : Vector2 = left_stick_input.normalized().rotated(-camera_focus.rotation.y) * speed
+	velocity = Vector3(-movement.x, 0, -movement.y);
+	move_and_slide();
+	#position += Vector3(-movement.x, 0, -movement.y)
 	
 	# Check if the camera trigger button is held
 	if(Input.is_action_pressed('camera_trigger')):
@@ -112,8 +114,10 @@ func _process_locking(delta: float) -> void:
 	var right_stick_input = Input.get_vector("rightstick_left", "rightstick_right", "rightstick_up", "rightstick_down")
 	
 	# Player position movement
-	var movement : Vector2 = left_stick_input.normalized().rotated(-camera_focus.rotation.y) * delta * speed
-	position += Vector3(-movement.x, 0, -movement.y)
+	var movement : Vector2 = left_stick_input.normalized().rotated(-camera_focus.rotation.y) * speed
+	velocity = Vector3(-movement.x, 0, -movement.y);
+	move_and_slide();
+	#position += Vector3(-movement.x, 0, -movement.y)
 		
 	# Check if the camera trigger button is held
 	if(!Input.is_action_pressed('camera_trigger')):
@@ -143,8 +147,10 @@ func _process_snapping(delta: float) -> void:
 	var right_stick_input = Input.get_vector("rightstick_left", "rightstick_right", "rightstick_up", "rightstick_down")
 	
 	# Player position movement
-	var movement : Vector2 = left_stick_input.normalized().rotated(-camera_focus.rotation.y) * delta * speed
-	position += Vector3(-movement.x, 0, -movement.y)
+	var movement : Vector2 = left_stick_input.normalized().rotated(-camera_focus.rotation.y) * speed
+	velocity = Vector3(-movement.x, 0, -movement.y);
+	move_and_slide();
+	#position += Vector3(-movement.x, 0, -movement.y)
 		
 	if(right_stick_input.length() > 0):
 		# Get a position for the player to look at
