@@ -45,33 +45,33 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	match controls:
 		ControlScheme.Toggled:
 			_process_toggled(delta)
 			camera_label.text = "Camera mode: Toggled"
-			if(Input.is_action_just_pressed("debug_next")):
-				controls = ControlScheme.Locking
-			elif(Input.is_action_just_pressed("debug_last")):
-				controls = ControlScheme.Snapping
+			#if(Input.is_action_just_pressed("debug_next")):
+				#controls = ControlScheme.Locking
+			#elif(Input.is_action_just_pressed("debug_last")):
+				#controls = ControlScheme.Snapping
 		ControlScheme.Locking:
 			_process_locking(delta)
 			camera_label.text = "Camera mode: Locking"
-			if(Input.is_action_just_pressed("debug_next")):
-				controls = ControlScheme.Snapping
-			elif(Input.is_action_just_pressed("debug_last")):
-				controls = ControlScheme.Toggled
+			#if(Input.is_action_just_pressed("debug_next")):
+				#controls = ControlScheme.Snapping
+			#elif(Input.is_action_just_pressed("debug_last")):
+				#controls = ControlScheme.Toggled
 		ControlScheme.Snapping:
 			_process_snapping(delta)
 			camera_label.text = "Camera mode: Snapping"
-			if(Input.is_action_just_pressed("debug_next")):
-				controls = ControlScheme.Toggled
-			elif(Input.is_action_just_pressed("debug_last")):
-				controls = ControlScheme.Locking
+			#if(Input.is_action_just_pressed("debug_next")):
+				#controls = ControlScheme.Toggled
+			#elif(Input.is_action_just_pressed("debug_last")):
+				#controls = ControlScheme.Locking
 	
 	if(controls != ControlScheme.Snapping):
 		_has_snap_target = false
+	
 	
 func _process_toggled(delta: float) -> void:
 	# Getting the joysticks as a vector

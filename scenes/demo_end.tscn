@@ -14,6 +14,19 @@ albedo_color = Color(0.34901962, 1, 0.34901962, 0.14117648)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mldf"]
 size = Vector3(7.7562256, 6.32959, 7.217285)
 
+[sub_resource type="BoxMesh" id="BoxMesh_3mldf"]
+size = Vector3(1, 2.9658203, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xlmn"]
+transparency = 1
+albedo_color = Color(0.34901962, 1, 0.34901962, 0.6745098)
+
+[sub_resource type="PrismMesh" id="PrismMesh_3mldf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryeef"]
+transparency = 1
+albedo_color = Color(0.34901962, 1, 0.34901962, 0.6745098)
+
 [node name="DemoEnd" type="Node3D" unique_id=439430573]
 script = ExtResource("1_6xlmn")
 
@@ -42,5 +55,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8up58")
 [node name="DemoEndShape" type="CollisionShape3D" parent="DemoEndArea" unique_id=1379682529]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020568848, 2.664795, -3.1086426)
 shape = SubResource("BoxShape3D_3mldf")
+
+[node name="ArrowBase" type="MeshInstance3D" parent="." unique_id=822691616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3298, 0)
+mesh = SubResource("BoxMesh_3mldf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6xlmn")
+
+[node name="ArrowPoint" type="MeshInstance3D" parent="." unique_id=1409441019]
+transform = Transform3D(3.3112075, 0, 0, 0, -2.1039758, -8.7422784e-08, 0, 1.839354e-07, -1.0000001, 0, 8.767321, 0)
+mesh = SubResource("PrismMesh_3mldf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ryeef")
 
 [connection signal="body_entered" from="DemoEndArea" to="." method="_on_demo_end_area_body_entered"]
