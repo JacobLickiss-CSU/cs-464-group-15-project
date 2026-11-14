@@ -10,9 +10,6 @@ var current_run_type : Player.ControlScheme
 var run_index = -1
 
 @export
-var current_run_score : int = 0
-
-@export
 var current_run_time : float = 0
 
 @export
@@ -43,7 +40,6 @@ func reset_experiment():
 	scores = {}
 	times = {}
 	arrows_hit = {}
-	current_run_score = 0
 	current_run_time = 0
 	current_run_arrows_hit = 0
 	current_run_arrows_blocked = 0
@@ -63,17 +59,21 @@ func new_run() -> bool:
 
 # Stores the current run data.
 func _store_run() -> void:
-	scores[current_run_type] = current_run_score;
+	scores[current_run_type] = _calculate_current_score();
 	times[current_run_type] = current_run_time;
 	arrows_hit[current_run_type] = current_run_arrows_hit;
 	arrows_blocked[current_run_type] = current_run_arrows_blocked;
+	
+	
+func _calculate_current_score() -> float:
+	return current_run_time * (1 + current_run_arrows_hit);
 
 
 # Resets the current run information.
 func _reset_run() -> void:
-	current_run_score = 0
 	current_run_time = 0
 	current_run_arrows_hit = 0
+	current_run_arrows_blocked = 0
 
 
 # Moves the run type forward.

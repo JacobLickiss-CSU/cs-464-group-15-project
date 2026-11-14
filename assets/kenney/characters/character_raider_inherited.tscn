@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cgof86i0syfhk"]
+
+[ext_resource type="PackedScene" uid="uid://j813v0yqbmbm" path="res://assets/kenney/characters/character-raider.fbx" id="1_qbv0q"]
+
+[node name="character-raider" unique_id=456378534 instance=ExtResource("1_qbv0q")]
+
+[node name="Skeleton3D" parent="character-raider" parent_id_path=PackedInt32Array(228579860) index="0" unique_id=1743745224]
+bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
+bones/5/rotation = Quaternion(0, 0.5, 0, 0.8660254)
+bones/6/position = Vector3(0, 0.16699998, 0.026388645)

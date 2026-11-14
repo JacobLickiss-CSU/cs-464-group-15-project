@@ -11,6 +11,9 @@ albedo_color = Color(0.38363665, 0.81175095, 0.85933137, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_3mldf"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8up58"]
+size = Vector3(1.3843384, 1.4938965, 0.58405304)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
 radius = 0.5991211
 height = 2.0551758
@@ -42,6 +45,13 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="shield-rectangle" parent="VisualPlayer/character-knight" unique_id=141377814 instance=ExtResource("3_qhqgy")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.07059365, 0.34247282)
+
+[node name="ShieldCollider" type="StaticBody3D" parent="VisualPlayer" unique_id=651314954 groups=["shield"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9563401)
+
+[node name="ShieldShape" type="CollisionShape3D" parent="VisualPlayer/ShieldCollider" unique_id=578898861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004547119, 0.94299316, -0.074474335)
+shape = SubResource("BoxShape3D_8up58")
 
 [node name="CameraFocus" type="Node3D" parent="." unique_id=1564281128]
 

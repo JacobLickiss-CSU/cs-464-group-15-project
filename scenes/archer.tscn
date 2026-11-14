@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b8wwdnl7u57aq"]
+
+[ext_resource type="PackedScene" uid="uid://cgof86i0syfhk" path="res://assets/kenney/characters/character_raider_inherited.tscn" id="1_jggnj"]
+[ext_resource type="Script" uid="uid://w4tpngg61ncp" path="res://scripts/Archer.gd" id="1_orquw"]
+[ext_resource type="PackedScene" uid="uid://dwepmq83ablss" path="res://assets/kenney/characters/weapon-bow.fbx" id="2_b0l3x"]
+[ext_resource type="PackedScene" uid="uid://wdfr6c3u1myg" path="res://scenes/arrow.tscn" id="2_cctdm"]
+
+[node name="Archer" type="Node3D" unique_id=202840247 node_paths=PackedStringArray("player_raycast")]
+script = ExtResource("1_orquw")
+player_raycast = NodePath("PlayerRaycast")
+arrow = ExtResource("2_cctdm")
+
+[node name="character-raider" parent="." unique_id=456378534 instance=ExtResource("1_jggnj")]
+transform = Transform3D(-2.5, 0, 2.1855695e-07, 0, 2.5, 0, -2.1855695e-07, 0, -2.5, 0, 0, 0)
+
+[node name="weapon-bow" parent="character-raider" unique_id=832888108 instance=ExtResource("2_b0l3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119680084, 0.049910333, 0.1590472)
+
+[node name="PlayerRaycast" type="RayCast3D" parent="." unique_id=1951232681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

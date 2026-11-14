@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://wdfr6c3u1myg"]
+
+[ext_resource type="Script" uid="uid://g0yexe1x48d0" path="res://scripts/Arrow.gd" id="1_23jat"]
+[ext_resource type="PackedScene" uid="uid://dckevbii8v1ih" path="res://assets/kenney/characters/weapon-arrow.fbx" id="1_umosx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mldf"]
+size = Vector3(0.36627197, 0.35601807, 1.3726807)
+
+[node name="Arrow" type="Node3D" unique_id=1743808863]
+script = ExtResource("1_23jat")
+
+[node name="weapon-arrow" parent="." unique_id=1407104608 instance=ExtResource("1_umosx")]
+transform = Transform3D(3, 0, 0, 0, -3, -2.6226832e-07, 0, 2.6226832e-07, -3, 0, 0, 0)
+
+[node name="CollisionArea" type="Area3D" parent="." unique_id=1254291696]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea" unique_id=1528638594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015563965, -0.00015258789, -0.00018310547)
+shape = SubResource("BoxShape3D_3mldf")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://22p4bw0r4kwj"]
+
+[ext_resource type="PackedScene" uid="uid://dx82vx5o7n86o" path="res://assets/kenney/dungeon/wall.fbx" id="1_wykyb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mldf"]
+size = Vector3(2.5441895, 2.8200684, 2.5736084)
+
+[node name="Wall" type="Node3D" unique_id=238459001]
+
+[node name="wall" parent="." unique_id=21663013 instance=ExtResource("1_wykyb")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="WallCollider" type="StaticBody3D" parent="." unique_id=1375536906 groups=["wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallCollider" unique_id=1182746098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040283203, 1.4102783, 0.012390137)
+shape = SubResource("BoxShape3D_3mldf")
